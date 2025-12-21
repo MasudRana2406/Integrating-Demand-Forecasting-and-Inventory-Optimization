@@ -1,13 +1,13 @@
-**Integrating Retail Demand Forecasting and Inventory Optimization to Enhance Supply Chain Efficiency**
+# Integrating Retail Demand Forecasting and Inventory Optimization to Enhance Supply Chain Efficiency
 
-**Project Overview**
+## Project Overview
 
 This project demonstrates an end-to-end retail analytics pipeline that integrates demand forecasting with inventory optimisation to improve service levels and reduce operational costs.
 Using the M5 Forecasting dataset, the study compares traditional statistical methods with modern machine learning and deep learning models, and evaluates how forecast-driven inventory policies outperform classical replenishment strategies.
 
 The project is designed from both an academic and industry perspective, aligning forecasting accuracy with downstream inventory KPIs such as fill rate, stockout rate, total cost, and inventory turnover.
 
-**Objectives**
+## Objectives
 
 - Analyze retail sales behavior using exploratory data analysis (EDA)
 
@@ -21,9 +21,9 @@ The project is designed from both an academic and industry perspective, aligning
 
 - Quantify improvements in service level and cost efficiency
 
-**Dataset**
+## Dataset
 
-M5 Forecasting – Accuracy Dataset
+_M5 Forecasting – Accuracy Dataset_
 
 Files used:
 
@@ -35,163 +35,124 @@ Files used:
 
 Subset used for demonstration:
 
-State: WI
+- State: WI
 
-Store: WI_3
+- Store: WI_3
 
-Category: FOODS
+- Category: FOODS
 
-Department: FOODS_2
+- Department: FOODS_2
 
-**Methodology**
+## Exploratory Data Analysis (EDA)
 
-### 1. Exploratory Data Analysis (EDA)
+- Sales distribution and zero-sales analysis
 
-Sales distribution and zero-sales analysis
+- Trend and seasonality (daily, weekly, monthly)
 
-Trend and seasonality (daily, weekly, monthly)
+- Price elasticity analysis
 
-Price elasticity analysis
+- Event and SNAP impact
 
-Event and SNAP impact
+- Correlation analysis with numerical features
 
-Correlation analysis with numerical features
+## Feature Engineering
 
-### 2. Feature Engineering
+- Lag features: 1, 7, 14, 28 days
 
-Lag features: 1, 7, 14, 28 days
+- Rolling means: 7-day, 28-day
 
-Rolling means: 7-day, 28-day
+- Calendar-based features
 
-Calendar-based features
+- Event and promotion indicators
 
-Event and promotion indicators
+## Demand Forecasting Models
 
-# **Demand Forecasting Models**
-## Machine Learning Models
+### Machine Learning Models
 
-XGBoost
+- XGBoost
 
-LightGBM
+- LightGBM
 
-CatBoost (best-performing model)
+- CatBoost (best-performing model)
 
-Statistical Models
+### Statistical Models
 
-Holt–Winters Exponential Smoothing
+- Holt–Winters Exponential Smoothing
 
-SARIMA
+- SARIMA
 
-Deep Learning
+### Deep Learning
 
 LSTM
 
-## Evaluation Metrics
+### Evaluation Metrics
 
-RMSE
-
-MAE
-
-MAPE
-
-sMAPE
+RMSE, MAE, MAPE, sMAPE
 
 CatBoost achieved the lowest RMSE and was selected for downstream inventory optimization.
+
 Hyperparameter tuning was performed using Optuna.
 
-Inventory Optimization
-Baseline Policy
+## Inventory Optimization
+- Baseline Policy: Traditional (s, Q) inventory policy or  Continuous-review fixed reorder point based on historical mean demand
 
-Traditional (s, Q) inventory policy
+- ML-Driven Policy: Forecast-driven replenishment
 
-Continuous-review fixed reorder point
-
-Based on historical mean demand
-
-Low safety stock scenario
-
-ML-Driven Policy
-
-Forecast-driven replenishment
-
-Dynamic reorder point:
-
-ROP=Forecast Demand×Lead Time
+   Dynamic reorder point: ROP=Forecast Demand×Lead Time
 
 Demand generated from tuned CatBoost model
 
-Same lead time and cost assumptions for fair comparison
-
 Inventory KPIs Evaluated
 
-Fill Rate (Service Level)
+- Fill Rate (Service Level)
 
-Stockout Rate
+- Stockout Rate
 
-Total Cost
+- Total Cost
 
-Holding Cost
+- Holding Cost
 
-Ordering Cost
+- Ordering Cost
 
-**Inventory Turnover**
+### Inventory Turnover
 
 Results clearly show that forecast-driven inventory decisions:
 
-Improve fill rate
+- Improve fill rate
 
-Reduce stockouts
+- Reduce stockouts
 
-Lower total inventory cost
+- Lower total inventory cost
 
-Increase inventory turnover
+- Increase inventory turnover
 
-**Visualizations**
+### Visualizations
 
 The project includes:
 
-Sales trends and seasonality plots
+- Sales trends and seasonality plots
 
-Forecast vs actual comparisons
+- Forecast vs actual comparisons
 
-Model performance comparison charts
+- Model performance comparison charts
 
-KPI comparison between traditional and ML-driven inventory policies
-
-Annotated bar charts highlighting best models and improvements
+- KPI comparison between traditional and ML-driven inventory policies
 
 All figures are saved for reporting and presentation.
 
-**Tech Stack**
+### Tech Stack: 
+Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, LightGBM, CatBoost, TensorFlow / Keras, Statsmodels, Optuna,  Google Colab
 
-Python
+### How to Run
 
-Pandas, NumPy
+- Clone the repository
 
-Matplotlib, Seaborn
+- Open the notebook in Google Colab
 
-Scikit-learn
+- Mount Google Drive
 
-XGBoost, LightGBM, CatBoost
+- Install required libraries:
 
-TensorFlow / Keras
-
-Statsmodels
-
-Optuna
-
-Google Colab
-
-**How to Run**
-
-Clone the repository
-
-Open the notebook in Google Colab
-
-Mount Google Drive
-
-Install required libraries:
-
-pip install catboost optuna
+_pip install catboost optuna_
 
 Run the notebook sequentially
