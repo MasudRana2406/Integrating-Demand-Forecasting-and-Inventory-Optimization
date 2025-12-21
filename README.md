@@ -83,7 +83,7 @@ Subset used for demonstration:
 
 ### Deep Learning
 
-LSTM
+- LSTM
 
 ### Evaluation Metrics
 
