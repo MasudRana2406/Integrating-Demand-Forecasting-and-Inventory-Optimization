@@ -1,134 +1,197 @@
-# Retail Demand Forecasting & Inventory Optimization (LSTM Model)
+**Integrating Retail Demand Forecasting and Inventory Optimization to Enhance Supply Chain Efficiency**
 
-**Author:** Masud Rana
-**Website:** [Data4Fashion.com](https://data4fashion.com)
-**GitHub:** [MasudRana2406](https://github.com/MasudRana2406)
+**Project Overview**
 
----
+This project demonstrates an end-to-end retail analytics pipeline that integrates demand forecasting with inventory optimisation to improve service levels and reduce operational costs.
+Using the M5 Forecasting dataset, the study compares traditional statistical methods with modern machine learning and deep learning models, and evaluates how forecast-driven inventory policies outperform classical replenishment strategies.
 
-## Project Overview
+The project is designed from both an academic and industry perspective, aligning forecasting accuracy with downstream inventory KPIs such as fill rate, stockout rate, total cost, and inventory turnover.
 
-This project predicts future product sales using deep learning (LSTM) on the M5 Forecasting – Walmart Sales dataset.
-The model helps retailers plan inventory, reduce stockouts, and improve service levels — transforming sales history into actionable insights.
+**Objectives**
 
----
+- Analyze retail sales behavior using exploratory data analysis (EDA)
 
-## Dataset Information
+- Build and compare multiple demand forecasting models
 
-**Source:** [Kaggle – M5 Forecasting Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
+- Identify the best-performing forecasting model
 
-**Files used:**
+- Integrate forecasts into inventory decision-making
 
-* `sales_train_validation.csv` → Historical daily sales for each item and store
-* `calendar.csv` → Date mapping and events (used for aligning sales timeline)
+- Compare traditional (s, Q) inventory policy with ML-driven dynamic replenishment
 
-**Data size:**
+- Quantify improvements in service level and cost efficiency
 
-* 30,490 products × 1,913 days of daily sales
-* Period: January 2011 – May 2016
+**Dataset**
 
----
+M5 Forecasting – Accuracy Dataset
 
-## Business Objective
+Files used:
 
-To forecast future daily sales for any product or store and assist decision-makers in:
+   01. sales_train_validation.csv → Daily unit sales per item–store
+   
+   02. calendar.csv → Date attributes (events, SNAP, weekdays, seasonality)
+   
+   03. sell_prices.csv → Historical selling prices
 
-* Determining optimal inventory levels
-* Planning production or replenishment
-* Reducing holding costs and lost-sales risk
+Subset used for demonstration:
 
----
+State: WI
 
-## Methodology
+Store: WI_3
 
-| Step                           | Description                                                                                         |
-| ------------------------------ | --------------------------------------------------------------------------------------------------- |
-| **1. Data Loading & Cleaning** | Read `sales_train_validation.csv` and `calendar.csv`, align 1913 daily records with calendar dates. |
-| **2. Product Selection**       | Dynamically identify product and store (e.g., `HOBBIES_1_001_CA_1`).                                |
-| **3. Data Preprocessing**      | Scale sales data to [0,1] range and create rolling time windows (past 30 days → next day).          |
-| **4. Model Building**          | Two-layer LSTM network with dropout for regularization.                                             |
-| **5. Evaluation**              | Compare actual vs predicted sales on the last 20% of data.                                          |
-| **6. Forecasting**             | Predict next 30 days and visualize the future trend.                                                |
+Category: FOODS
 
----
+Department: FOODS_2
 
-## Model Architecture
+**Methodology**
 
-```text
-Input (30 timesteps)
-   ↓
-LSTM(64, return_sequences=True)
-   ↓
-Dropout(0.2)
-   ↓
-LSTM(32)
-   ↓
-Dense(1)
-```
+### 1. Exploratory Data Analysis (EDA)
 
-**Loss Function:** Mean Squared Error (MSE)
-**Optimizer:** Adam
-**Epochs:** 25 with early stopping
+Sales distribution and zero-sales analysis
 
----
+Trend and seasonality (daily, weekly, monthly)
 
-## Results
+Price elasticity analysis
 
-### Sample Product Forecast
+Event and SNAP impact
 
-![LSTM Forecast](results/sample_forecast.png)
+Correlation analysis with numerical features
 
-**Observation:**
+### 2. Feature Engineering
 
-* The model effectively captures seasonal and weekly patterns.
-* Forecasted sales follow realistic retail fluctuations — useful for inventory and supply-chain decisions.
+Lag features: 1, 7, 14, 28 days
 
----
+Rolling means: 7-day, 28-day
 
-## Next 30-Day Forecast (Example)
+Calendar-based features
 
-| Date       | Predicted Sales |
-| ---------- | --------------: |
-| 2016-05-23 |           212.7 |
-| 2016-05-24 |           219.4 |
-| 2016-05-25 |           225.8 |
-| ...        |             ... |
+Event and promotion indicators
 
-*(Saved automatically as `forecast_next_30_days.csv`)*
+# **Demand Forecasting Models**
+## Machine Learning Models
 
----
+XGBoost
 
-## Key Learnings
+LightGBM
 
-* Proper date alignment between `calendar.csv` and sales columns (`d_1`–`d_1913`) is crucial.
-* LSTM models can generalize sales patterns from raw transactional data without explicit time features.
-* A small change (window size, dropout, learning rate) can significantly impact forecasting stability.
+CatBoost (best-performing model)
 
----
+Statistical Models
 
-## Future Improvements
+Holt–Winters Exponential Smoothing
 
-| Enhancement                   | Goal                                             |
-| ----------------------------- | ------------------------------------------------ |
-| Add `sell_prices.csv`         | Include price sensitivity and promotion effects. |
-| Integrate event/holiday flags | Capture spikes during promotions or holidays.    |
-| Compare with classical models | Evaluate ARIMA, Prophet, and XGBoost baselines.  |
-| Build Streamlit dashboard     | Enable interactive forecast visualization.       |
+SARIMA
 
----
+Deep Learning
 
-## Tech Stack
+LSTM
 
-**Languages:** Python
-**Libraries:** Pandas, NumPy, Matplotlib, Scikit-Learn, TensorFlow/Keras
-**IDE:** Google Colab
-**Version Control:** Git & GitHub
+## Evaluation Metrics
 
----
+RMSE
 
-## Author’s Note
+MAE
 
-> “I built this project to bridge my retail merchandising experience with data science — using machine learning to drive better forecasting and inventory decisions. This is part of my Data4Fashion portfolio.”
+MAPE
 
-**Connect with me:** [LinkedIn – Masud Rana](https://linkedin.com/in/masudranads)
+sMAPE
 
+CatBoost achieved the lowest RMSE and was selected for downstream inventory optimization.
+Hyperparameter tuning was performed using Optuna.
+
+Inventory Optimization
+Baseline Policy
+
+Traditional (s, Q) inventory policy
+
+Continuous-review fixed reorder point
+
+Based on historical mean demand
+
+Low safety stock scenario
+
+ML-Driven Policy
+
+Forecast-driven replenishment
+
+Dynamic reorder point:
+
+ROP=Forecast Demand×Lead Time
+
+Demand generated from tuned CatBoost model
+
+Same lead time and cost assumptions for fair comparison
+
+Inventory KPIs Evaluated
+
+Fill Rate (Service Level)
+
+Stockout Rate
+
+Total Cost
+
+Holding Cost
+
+Ordering Cost
+
+**Inventory Turnover**
+
+Results clearly show that forecast-driven inventory decisions:
+
+Improve fill rate
+
+Reduce stockouts
+
+Lower total inventory cost
+
+Increase inventory turnover
+
+**Visualizations**
+
+The project includes:
+
+Sales trends and seasonality plots
+
+Forecast vs actual comparisons
+
+Model performance comparison charts
+
+KPI comparison between traditional and ML-driven inventory policies
+
+Annotated bar charts highlighting best models and improvements
+
+All figures are saved for reporting and presentation.
+
+**Tech Stack**
+
+Python
+
+Pandas, NumPy
+
+Matplotlib, Seaborn
+
+Scikit-learn
+
+XGBoost, LightGBM, CatBoost
+
+TensorFlow / Keras
+
+Statsmodels
+
+Optuna
+
+Google Colab
+
+**How to Run**
+
+Clone the repository
+
+Open the notebook in Google Colab
+
+Mount Google Drive
+
+Install required libraries:
+
+pip install catboost optuna
+
+Run the notebook sequentially
