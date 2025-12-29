@@ -67,6 +67,12 @@ Subset used for demonstration:
 
 ## Demand Forecasting Models
 
+### Statistical Models
+
+- Holt–Winters Exponential Smoothing
+
+- SARIMA
+
 ### Machine Learning Models
 
 - XGBoost
@@ -74,12 +80,6 @@ Subset used for demonstration:
 - LightGBM
 
 - CatBoost (best-performing model)
-
-### Statistical Models
-
-- Holt–Winters Exponential Smoothing
-
-- SARIMA
 
 ### Deep Learning
 
@@ -93,7 +93,7 @@ CatBoost achieved the lowest RMSE and was selected for downstream inventory opti
 
 Hyperparameter tuning was performed using Optuna.
 
-## Inventory Optimization
+## Inventory Optimisation
 - Baseline Policy: Traditional (s, Q) inventory policy or  Continuous-review fixed reorder point based on historical mean demand
 
 - ML-Driven Policy: Forecast-driven replenishment
