@@ -126,19 +126,6 @@ Results clearly show that forecast-driven inventory decisions:
 
 - Increase inventory turnover
 
-### Visualizations
-
-The project includes:
-
-- Sales trends and seasonality plots
-
-- Forecast vs actual comparisons
-
-- Model performance comparison charts
-
-- KPI comparison between traditional and ML-driven inventory policies
-
-All figures are saved for reporting and presentation.
 
 ### Tech Stack: 
 Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, LightGBM, CatBoost, TensorFlow / Keras, Statsmodels, Optuna,  Google Colab
