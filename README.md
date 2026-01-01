@@ -60,7 +60,7 @@ Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, LightGBM, Cat
 
 
 ## Usage
-1. Clone the repository  
+1. Clone the repository (locally or in google colab) 
 git clone https://github.com/MasudRana2406/Integrating-Demand-Forecasting-and-Inventory-Optimization.git
 2. Open the notebook in Google Colab
 
