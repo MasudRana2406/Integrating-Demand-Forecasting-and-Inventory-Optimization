@@ -58,19 +58,20 @@ Key files used:
 ## Tech Stack
 Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, LightGBM, CatBoost, TensorFlow/Keras, Statsmodels, Optuna, Google Colab
 
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) – free for personal, academic, or commercial use, with attribution.
 
 ## Usage
 1. Clone the repository  
-git clone <repo-url>
+git clone https://github.com/MasudRana2406/Integrating-Demand-Forecasting-and-Inventory-Optimization.git
 2. Open the notebook in Google Colab
 
 3. Mount Google Drive
 
 4. Install required libraries:
 ```
-pip install catboost optuna
+pip install -r requirements.txt
 ```
 5. Run the notebook sequentially
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) – free for personal, academic, or commercial use, with attribution.
