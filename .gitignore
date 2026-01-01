@@ -1,0 +1,40 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+*.env
+
+# Data files (avoid pushing large datasets)
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.h5
+*.parquet
+
+# Model outputs
+models/
+*.pkl
+*.joblib
+
+# Results/figures
+results/
+*.png
+*.jpg
+*.pdf
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
