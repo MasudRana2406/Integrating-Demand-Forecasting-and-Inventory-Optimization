@@ -212,7 +212,7 @@ Steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/MasudRana2406/Integrating-Demand-Forecasting-and-Inventory-Optimization.git
-   ```bash
+   ```
 1. Open the notebook in **Google Colab**
 2. Mount **Google Drive** when prompted
 3. Ensure dataset paths match your Drive directory structure
