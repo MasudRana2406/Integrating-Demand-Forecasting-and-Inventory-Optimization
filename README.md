@@ -148,14 +148,14 @@ A traditional **continuous-review (s, Q)** inventory policy is implemented using
 A deterministic forecast-based policy is constructed using CatBoost predictions:
 
 - **Reorder Point (ROP)**  
-  \[
-  ROP = \text{Forecasted Daily Demand} \times \text{Lead Time}
-  \]
+$$
+ROP = \text{Forecasted Daily Demand} \times \text{Lead Time}
+$$
 
 - **Order Quantity (Q)**  
-  \[
-  Q = \text{Forecasted Daily Demand} \times \text{Lead Time}
-  \]
+$$
+Q = \text{Forecasted Daily Demand} \times \text{Lead Time}
+$$
 
 No explicit safety stock is included to isolate the impact of improved demand forecasting.
 
