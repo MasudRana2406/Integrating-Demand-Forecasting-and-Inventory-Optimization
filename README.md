@@ -149,15 +149,11 @@ A deterministic forecast-based policy is constructed using CatBoost predictions:
 
 #### **Reorder Point (ROP)**  
 
-\[
-\text{ROP} = (\text{Forecasted Daily Demand} \times \text{Lead Time}) + \text{Safety Stock}
-\]
+ROP=(Forecasted Daily Demand×Lead Time)+Safety Stock
 
 #### **Order Quantity (Q)**  
 
-\[
-Q = \text{Forecasted Daily Demand} \times \text{Lead Time}
-\]
+Q=Forecasted Daily Demand×Lead Time
 
 No explicit safety stock is included in the code to isolate the impact of improved demand forecasting.
 
