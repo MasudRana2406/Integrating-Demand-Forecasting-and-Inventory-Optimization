@@ -222,4 +222,4 @@ Steps:
 
 ## License
 
-This project is released under the **MIT License** and is free for academic, personal, and commercial use with attribution.
+This project is released under the **[MIT License](https://opensource.org/licenses/MIT)** and is free for academic, personal, and commercial use with attribution.
