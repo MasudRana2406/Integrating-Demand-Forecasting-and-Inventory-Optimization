@@ -1,4 +1,4 @@
-![Demand Forecasting](integrating-retail-demand-forecasting-inventory-optimization.jpg)
+![Integrating Demand Forecasting and Inventory Optimization](integrating-retail-demand-forecasting-inventory-optimization.png)
 # Integrating Retail Demand Forecasting and Inventory Optimization  
 *A Forecast-Driven Supply Chain Analytics Framework Using the M5 Dataset*
 
